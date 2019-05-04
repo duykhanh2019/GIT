@@ -12,10 +12,9 @@ do
         a=`expr $i - $s`
         x=`date -d "$a"day +"%d_%m_%Y"`
         GetKeyWord=`sed -n $i'p' idol.txt`
-        GetImageLink=$(wget --user-agent 'Mozilla/5.0' -qO - "https://www.google.com/search?q=$GetKeyWord\&tbm=isch" | sed 's/</\n</g' | grep '<img' | tail -"$r" | head -1 | sed 's/.*src="\([^"]*\)".*/\1/')
-#Tao tep moi 
+        GetImageLink=$(wget --user-agent 'Mozilla/5.0' -qO - "https://www.google.com/search?q=$GetKeyWord\&tbm=isch" | sed 's/</\n</g' | grep '<img' | tail -"$r" | head -1 | sed 's/.*src="\([^"]*\)".*/\1/') #Link dowload images 
 mkdir $x
-#tai anh vao thu muc
-wget $GetImageLink -O $x/$GetKeyWord.jpg
+wget $GetImageLink -O $x/$GetKeyWord.jpg #dowload images
+
 done
 
